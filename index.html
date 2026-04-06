@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NORDIC Meadery</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+* {margin:0;padding:0;box-sizing:border-box;}
+
+body {
+    font-family:'Inter',sans-serif;
+    background:#0a0a0a;
+    color:#eee;
+}
+
+nav {
+    position:fixed;
+    width:100%;
+    background:rgba(0,0,0,0.8);
+    padding:15px 40px;
+    z-index:1000;
+}
+
+nav h1 {
+    font-family:'Cinzel',serif;
+    color:#d4af37;
+}
+
+.hero {
+    height:100vh;
+    background:url('images/hero.jpg') center/cover;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.hero h1 {
+    font-family:'Cinzel',serif;
+    font-size:60px;
+}
+
+.section {
+    padding:100px 20px;
+    max-width:1200px;
+    margin:auto;
+}
+
+.grid {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:30px;
+}
+
+.card {
+    background:#111;
+    border-radius:12px;
+    overflow:hidden;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.card:hover {
+    transform:translateY(-10px) scale(1.02);
+}
+
+.card img {
+    width:100%;
+    height:260px;
+    object-fit:cover;
+}
+
+.card-content {
+    padding:20px;
+}
+
+.modal {
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.9);
+    display:none;
+    align-items:center;
+    justify-content:center;
+}
+
+.modal-content {
+    background:#111;
+    padding:30px;
+    border-radius:12px;
+    max-width:600px;
+}
+
+.close {
+    float:right;
+    cursor:pointer;
+    color:#d4af37;
+}
+
+footer {
+    text-align:center;
+    padding:40px;
+    background:#000;
+    color:#777;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <h1>NORDIC Meadery</h1>
+</nav>
+
+<section class="hero">
+    <h1>NORDIC Meadery</h1>
+</section>
+
+<section class="section">
+    <h2 style="color:#d4af37;">Our Meads</h2>
+
+    <div class="grid">
+
+        <!-- CORE -->
+        <div class="card" onclick="openModal('blodhind')">
+            <img src="images/blodhind.jpg">
+            <h3>BLÓÐHIND</h3>
+        </div>
+
+        <div class="card" onclick="openModal('sumarblom')">
+            <img src="images/sumarblom.jpg">
+            <h3>SUMARBLÓM</h3>
+        </div>
+
+        <div class="card" onclick="openModal('skogarblod')">
+            <img src="images/skogarblod.jpg">
+            <h3>SKÓGARBLÓÐ</h3>
+        </div>
+
+        <div class="card" onclick="openModal('blodvidr')">
+            <img src="images/blodvidr.jpg">
+            <h3>BLÓÐVIÐR</h3>
+        </div>
+
+        <div class="card" onclick="openModal('solblod')">
+            <img src="images/solblod.jpg">
+            <h3>SOLBLÓÐ</h3>
+        </div>
+
+        <div class="card" onclick="openModal('eldhost')">
+            <img src="images/eldhost.jpg">
+            <h3>ELDHÖST</h3>
+        </div>
+
+        <div class="card" onclick="openModal('odrerir')">
+            <img src="images/odrerir.jpg">
+            <h3>ÓÐRERIR</h3>
+        </div>
+
+        <div class="card" onclick="openModal('midgard')">
+            <img src="images/midgard.jpg">
+            <h3>MEAD OF MIDGARD</h3>
+        </div>
+
+        <!-- ADVANCED LINE -->
+        <div class="card" onclick="openModal('drakkablod')">
+            <img src="images/drakkablod.jpg">
+            <h3>DRAKKABLÓÐ</h3>
+        </div>
+
+        <div class="card" onclick="openModal('runamjod')">
+            <img src="images/runamjod.jpg">
+            <h3>RÚNAMJÖÐ</h3>
+        </div>
+
+        <div class="card" onclick="openModal('fjorkeldr')">
+            <img src="images/fjorkeldr.jpg">
+            <h3>FJÖRKELDR</h3>
+        </div>
+
+        <div class="card" onclick="openModal('nornagull')">
+            <img src="images/nornagull.jpg">
+            <h3>NORNAGULL</h3>
+        </div>
+
+    </div>
+</section>
+
+<!-- MODAL -->
+
+<div id="modal" class="modal" onclick="closeModal()">
+    <div class="modal-content" onclick="event.stopPropagation()">
+        <span class="close" onclick="closeModal()">✕</span>
+        <h2 id="title"></h2>
+        <p id="desc"></p>
+    </div>
+</div>
+
+<footer>
+    © 2026 NORDIC Meadery
+</footer>
+
+<script>
+
+const data = {
+
+    blodhind: {title:"BLÓÐHIND",desc:"Raspberry mead, bright and fresh."},
+    sumarblom: {title:"SUMARBLÓM",desc:"Strawberry mead, soft and smooth."},
+    skogarblod: {title:"SKÓGARBLÓÐ",desc:"Dark blackberry mead, deep and rich."},
+    blodvidr: {title:"BLÓÐVIÐR",desc:"Cherry mead, bold and smooth."},
+    solblod: {title:"SOLBLÓÐ",desc:"Orange mead, fresh and vibrant."},
+    eldhost: {title:"ELDHÖST",desc:"Apple cinnamon mead, warm and spiced."},
+    odrerir: {title:"ÓÐRERIR",desc:"Aged premium mead."},
+    midgard: {title:"MEAD OF MIDGARD",desc:"Balanced everyday mead."},
+
+    drakkablod: {title:"DRAKKABLÓÐ",desc:"Deep cherry mead with intense character."},
+    runamjod: {title:"RÚNAMJÖÐ",desc:"Mystical berry mead with layered flavors."},
+    fjorkeldr: {title:"FJÖRKELDR",desc:"Spiced mead with warmth and depth."},
+    nornagull: {title:"NORNAGULL",desc:"Golden traditional mead, refined and smooth."}
+
+};
+
+function openModal(type){
+    document.getElementById("modal").style.display="flex";
+    document.getElementById("title").innerText=data[type].title;
+    document.getElementById("desc").innerText=data[type].desc;
+}
+
+function closeModal(){
+    document.getElementById("modal").style.display="none";
+}
+
+</script>
+
+</body>
+</html>
