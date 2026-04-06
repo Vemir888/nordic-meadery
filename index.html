@@ -1,237 +1,549 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NORDIC Meadery</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>NORDIC Meadery</title>
+        <link rel="icon" type="image/png" href="images/icon.png">
+        <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+        <style>
+            :root {
+                --bg: #090b12;
+                --surface: #111624;
+                --surface-soft: #151d30;
+                --text: #f5f1e8;
+                --muted: #c3b8a6;
+                --accent: #d8a84c;
+                --accent-soft: #f5d18a;
+                --line: rgba(216, 168, 76, 0.25);
+                --shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+                --radius: 18px;
+            }
 
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
 
-<style>
-* {margin:0;padding:0;box-sizing:border-box;}
+            body {
+                font-family: 'Manrope', sans-serif;
+                background:
+                radial-gradient(1200px 500px at 0% -20%, #3f2a10 0%, transparent 60%),
+                radial-gradient(900px 400px at 100% 0%, #1f2b4a 0%, transparent 60%),
+                var(--bg);
+                color: var(--text);
+                min-height: 100vh;
+                line-height: 1.5;
+            }
 
-body {
-    font-family:'Inter',sans-serif;
-    background:#0a0a0a;
-    color:#eee;
-}
+            .container {
+                width: min(1180px, 92%);
+                margin: 0 auto;
+            }
 
-nav {
-    position:fixed;
-    width:100%;
-    background:rgba(0,0,0,0.8);
-    padding:15px 40px;
-    z-index:1000;
-}
+            .topbar {
+                position: sticky;
+                top: 0;
+                z-index: 20;
+                backdrop-filter: blur(10px);
+                background: rgba(9, 11, 18, 0.78);
+                border-bottom: 1px solid var(--line);
+            }
 
-nav h1 {
-    font-family:'Cinzel',serif;
-    color:#d4af37;
-}
+            .topbar-inner {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 14px 0;
+                gap: 16px;
+            }
 
-.hero {
-    height:100vh;
-    background:url('images/hero.jpg') center/cover;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-}
+            .brand {
+                display: inline-flex;
+                align-items: center;
+                gap: 10px;
+                font-family: 'Cormorant Garamond', serif;
+                letter-spacing: 0.06em;
+                font-size: 1.8rem;
+                color: var(--accent-soft);
+            }
 
-.hero h1 {
-    font-family:'Cinzel',serif;
-    font-size:60px;
-}
+            .brand-icon {
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                object-fit: cover;
+                border: 1px solid rgba(216, 168, 76, 0.45);
+            }
 
-.section {
-    padding:100px 20px;
-    max-width:1200px;
-    margin:auto;
-}
+            .lang-switch {
+                display: inline-flex;
+                border: 1px solid var(--line);
+                border-radius: 999px;
+                overflow: hidden;
+            }
 
-.grid {
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-    gap:30px;
-}
+            .lang-btn {
+                border: 0;
+                background: transparent;
+                color: var(--muted);
+                padding: 8px 14px;
+                cursor: pointer;
+                font-weight: 700;
+                transition: 0.2s;
+            }
 
-.card {
-    background:#111;
-    border-radius:12px;
-    overflow:hidden;
-    cursor:pointer;
-    transition:0.3s;
-}
+            .lang-btn.active {
+                background: var(--accent);
+                color: #241607;
+            }
 
-.card:hover {
-    transform:translateY(-10px) scale(1.02);
-}
+            .hero {
+                padding: 96px 0 56px;
+                text-align: center;
+            }
 
-.card img {
-    width:100%;
-    height:260px;
-    object-fit:cover;
-}
+            .hero h1 {
+                font-family: 'Cormorant Garamond', serif;
+                font-size: clamp(2.3rem, 6.5vw, 4.8rem);
+                line-height: 1.02;
+                margin-bottom: 18px;
+            }
 
-.card-content {
-    padding:20px;
-}
+            .hero p {
+                color: var(--muted);
+                font-size: clamp(1rem, 2.3vw, 1.18rem);
+                width: min(750px, 100%);
+                margin: 0 auto 30px;
+            }
 
-.modal {
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,0.9);
-    display:none;
-    align-items:center;
-    justify-content:center;
-}
+            .hero-cta {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                padding: 12px 24px;
+                background: linear-gradient(120deg, var(--accent), #e3b25a);
+                color: #291a09;
+                text-decoration: none;
+                border-radius: 999px;
+                font-weight: 700;
+                box-shadow: var(--shadow);
+            }
 
-.modal-content {
-    background:#111;
-    padding:30px;
-    border-radius:12px;
-    max-width:600px;
-}
+            .section {
+                padding: 34px 0 60px;
+            }
 
-.close {
-    float:right;
-    cursor:pointer;
-    color:#d4af37;
-}
+            .section-head {
+                display: flex;
+                align-items: end;
+                justify-content: space-between;
+                gap: 14px;
+                margin-bottom: 24px;
+            }
 
-footer {
-    text-align:center;
-    padding:40px;
-    background:#000;
-    color:#777;
-}
-</style>
-</head>
+            .section h2 {
+                font-family: 'Cormorant Garamond', serif;
+                font-size: clamp(2rem, 4vw, 3rem);
+                color: var(--accent-soft);
+                line-height: 1;
+            }
 
-<body>
+            .section-note {
+                color: var(--muted);
+                font-size: 0.95rem;
+            }
 
-<nav>
-    <h1>NORDIC Meadery</h1>
-</nav>
+            .products {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+                gap: 20px;
+            }
 
-<section class="hero">
-    <h1>NORDIC Meadery</h1>
-</section>
+            .product {
+                background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)), var(--surface);
+                border: 1px solid var(--line);
+                border-radius: var(--radius);
+                overflow: hidden;
+                transition: transform 0.25s ease, border-color 0.25s ease;
+                cursor: pointer;
+            }
 
-<section class="section">
-    <h2 style="color:#d4af37;">Our Meads</h2>
+            .product:hover {
+                transform: translateY(-6px);
+                border-color: rgba(216, 168, 76, 0.55);
+            }
 
-    <div class="grid">
+            .product img {
+                width: 100%;
+                height: 300px;
+                object-fit: contain;
+                background: #0b1120;
+                display: block;
+            }
 
-        <!-- CORE -->
-        <div class="card" onclick="openModal('blodhind')">
-            <img src="images/blodhind.jpg">
-            <h3>BLÓÐHIND</h3>
+            .product-body {
+                padding: 16px;
+            }
+
+            .product-name {
+                font-family: 'Cormorant Garamond', serif;
+                font-size: 1.5rem;
+                margin-bottom: 8px;
+                color: #fff4db;
+            }
+
+            .product-desc {
+                color: var(--muted);
+                font-size: 0.95rem;
+            }
+
+            .contact-wrap {
+                margin-top: 8px;
+                display: grid;
+                gap: 20px;
+                grid-template-columns: 1.1fr 1fr;
+            }
+
+            .panel {
+                background: var(--surface-soft);
+                border: 1px solid var(--line);
+                border-radius: var(--radius);
+                padding: 24px;
+            }
+
+            .panel h3 {
+                font-family: 'Cormorant Garamond', serif;
+                color: var(--accent-soft);
+                font-size: 1.7rem;
+                margin-bottom: 8px;
+            }
+
+            .contact-list {
+                list-style: none;
+                color: var(--muted);
+                display: grid;
+                gap: 10px;
+                margin-top: 12px;
+            }
+
+            .contact-list a {
+                color: #f3dfb5;
+                text-decoration: none;
+            }
+
+            .contact-form {
+                display: grid;
+                gap: 10px;
+                margin-top: 12px;
+            }
+
+            .contact-form input,
+            .contact-form textarea {
+                width: 100%;
+                background: rgba(8, 10, 17, 0.8);
+                border: 1px solid rgba(216, 168, 76, 0.25);
+                border-radius: 10px;
+                color: var(--text);
+                font-family: 'Manrope', sans-serif;
+                padding: 11px 12px;
+            }
+
+            .contact-form textarea {
+                min-height: 120px;
+                resize: vertical;
+            }
+
+            .contact-form button {
+                border: 0;
+                background: linear-gradient(120deg, var(--accent), #ebc26d);
+                color: #2c1b08;
+                font-weight: 800;
+                border-radius: 10px;
+                padding: 11px 16px;
+                cursor: pointer;
+            }
+
+            footer {
+                border-top: 1px solid var(--line);
+                color: #a09078;
+                text-align: center;
+                padding: 28px 0 36px;
+                margin-top: 40px;
+                font-size: 0.92rem;
+            }
+
+            .modal {
+                position: fixed;
+                inset: 0;
+                background: rgba(6, 8, 14, 0.82);
+                display: none;
+                align-items: center;
+                justify-content: center;
+                z-index: 50;
+                padding: 16px;
+            }
+
+            .modal-content {
+                width: min(620px, 100%);
+                background: #0f1625;
+                border: 1px solid var(--line);
+                border-radius: var(--radius);
+                padding: 24px;
+                position: relative;
+            }
+
+            .close {
+                position: absolute;
+                top: 14px;
+                right: 14px;
+                width: 34px;
+                height: 34px;
+                border: 0;
+                border-radius: 50%;
+                font-size: 20px;
+                line-height: 34px;
+                background: rgba(216, 168, 76, 0.14);
+                color: var(--accent-soft);
+                cursor: pointer;
+            }
+
+            #modal-title {
+                font-family: 'Cormorant Garamond', serif;
+                font-size: 2rem;
+                margin-bottom: 10px;
+                color: #fff2d5;
+            }
+
+            #modal-desc {
+                color: var(--muted);
+            }
+
+            @media (max-width: 900px) {
+                .contact-wrap {
+                    grid-template-columns: 1fr;
+                }
+
+                .section-head {
+                    flex-direction: column;
+                    align-items: flex-start;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <header class="topbar">
+            <div class="container topbar-inner">
+                <div class="brand">
+                    <img class="brand-icon" src="images/icon.png" alt="NORDIC Meadery icon">
+                    <span>NORDIC Meadery</span>
+                </div>
+                <div class="lang-switch" role="group" aria-label="Language switch">
+                    <button class="lang-btn active" data-lang-btn="en">EN</button>
+                    <button class="lang-btn" data-lang-btn="ru">RU</button>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <section class="hero container">
+                <h1 data-i18n="heroTitle">Handcrafted Mead Inspired by Northern Legends</h1>
+                <p data-i18n="heroSubtitle">From wild berry infusions to barrel-aged reserve bottles, each release is brewed in small batches with raw honey and bold Nordic character.</p>
+                <a href="#products" class="hero-cta" data-i18n="heroCta">Explore Collection</a>
+            </section>
+
+            <section id="products" class="section container">
+                <div class="section-head">
+                    <h2 data-i18n="productsTitle">Our Signature Meads</h2>
+                    <span class="section-note" data-i18n="productsNote">Tap any bottle to view flavor profile</span>
+                </div>
+                <div class="products" id="product-grid"></div>
+            </section>
+
+            <section id="contact" class="section container">
+                <div class="section-head">
+                    <h2 data-i18n="contactTitle">Contact the Meadery</h2>
+                </div>
+                <div class="contact-wrap">
+                    <article class="panel">
+                        <h3 data-i18n="visitTitle">Visit & Distribution</h3>
+                        <p data-i18n="visitDesc">For private tastings, retail partnerships, and export inquiries, our team will get back to you within one business day.</p>
+                        <ul class="contact-list">
+                            <li><span data-i18n="contactAddressLabel">Address:</span> Gusan Sheram 9, Yerevan</li>
+                            <li><span data-i18n="contactPhoneLabel">Phone:</span> <a href="tel:+37444575956">+37444575956</a></li>
+                            <li><span data-i18n="contactEmailLabel">Email:</span> <a href="mailto:nordic.group88@gmail.com">nordic.group88@gmail.com</a></li>
+                            <li><span data-i18n="contactHoursLabel">Hours:</span> <span data-i18n="contactHours">Mon-Sat, 10:00-20:00</span></li>
+                        </ul>
+                    </article>
+
+                    <article class="panel">
+                        <h3 data-i18n="formTitle">Send a Message</h3>
+                        <form class="contact-form" id="inquiry-form">
+                            <input type="text" id="inquiry-name" data-i18n-placeholder="formName" placeholder="Your name">
+                            <input type="email" id="inquiry-email" data-i18n-placeholder="formEmail" placeholder="Your email">
+                            <textarea id="inquiry-message" data-i18n-placeholder="formMessage" placeholder="Tell us what you are interested in"></textarea>
+                            <button type="submit" data-i18n="formButton">Submit Inquiry</button>
+                        </form>
+                    </article>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <span data-i18n="footer">© 2026 NORDIC Meadery. Crafted with honey, patience, and northern spirit.</span>
+        </footer>
+
+        <div id="modal" class="modal" onclick="closeModal()">
+            <div class="modal-content" onclick="event.stopPropagation()">
+                <button class="close" onclick="closeModal()">×</button>
+                <h2 id="modal-title"></h2>
+                <p id="modal-desc"></p>
+            </div>
         </div>
 
-        <div class="card" onclick="openModal('sumarblom')">
-            <img src="images/sumarblom.jpg">
-            <h3>SUMARBLÓM</h3>
-        </div>
+        <script>
+            const products = [
+                { id: 'midgard', image: 'images/meads/midgard.jpg', title: 'MEAD OF MIDGARD', descEn: 'Classic house blend made for everyday rituals.', descRu: 'Классический фирменный купаж для повседневных ритуалов.' },
+                { id: 'odrerir', image: 'images/meads/odrerir.jpg', title: 'ÓÐRERIR', descEn: 'Reserve edition aged mead with caramel honey depth.', descRu: 'Выдержанный мёд резервной серии с карамельно-медовой глубиной.' },
+                { id: 'solblod', image: 'images/meads/solblod.jpg', title: 'SOLBLÓÐ', descEn: 'Citrus-forward orange mead with sunlit freshness.', descRu: 'Апельсиновый мёд с цитрусовым акцентом и яркой свежестью.' },
+                { id: 'sumarblom', image: 'images/meads/sumarblom.jpg', title: 'SUMARBLÓM', descEn: 'Silky strawberry mead with floral notes and a soft body.', descRu: 'Нежный клубничный мёд с цветочными оттенками и мягкой текстурой.' },
+                { id: 'blodvidr', image: 'images/meads/blodvidr.jpg', title: 'BLÓÐVIÐR', descEn: 'Cherry-led mead, full-bodied and balanced with oak spice.', descRu: 'Вишнёвый мёд с плотным телом и сбалансированной дубовой пряностью.' },
+                { id: 'blodhind', image: 'images/meads/blodhind.jpg', title: 'BLÓÐHIND', descEn: 'Raspberry mead with bright acidity and a clean honey finish.', descRu: 'Малиновый мёд с яркой кислотностью и чистым медовым послевкусием.' },
+                { id: 'skogarblod', image: 'images/meads/skogarblod.jpg', title: 'SKÓGARBLÓÐ', descEn: 'Deep blackberry expression with layered forest fruit aroma.', descRu: 'Глубокий ежевичный профиль с многослойным ароматом лесных ягод.' },
+                { id: 'drakkablod', image: 'images/meads/drakkablod.jpg', title: 'DRAKKABLÓÐ', descEn: 'Powerful cherry mead with concentrated dark fruit.', descRu: 'Мощный вишнёвый мёд с концентрированным тёмно-ягодным вкусом.' },
+                { id: 'runamjod', image: 'images/meads/runamjod.jpg', title: 'RÚNAMJÖÐ', descEn: 'Complex berry mead with mysterious herbal hints.', descRu: 'Сложный ягодный мёд с загадочными травяными нюансами.' },
+                { id: 'fjorkeldr', image: 'images/meads/fjorkeldr.jpg', title: 'FJÖRKELDR', descEn: 'Spiced mead with warming finish and festive character.', descRu: 'Пряный мёд с согревающим послевкусием и праздничным характером.' },
+                { id: 'nornagull', image: 'images/meads/nornagull.jpg', title: 'NORNAGULL', descEn: 'Golden traditional mead, elegant and long on the palate.', descRu: 'Золотой традиционный мёд, элегантный и долгий во вкусе.' }
+            ];
 
-        <div class="card" onclick="openModal('skogarblod')">
-            <img src="images/skogarblod.jpg">
-            <h3>SKÓGARBLÓÐ</h3>
-        </div>
+            const i18n = {
+                en: {
+                    heroTitle: 'Handcrafted Mead Inspired by Northern Legends',
+                    heroSubtitle: 'From wild berry infusions to barrel-aged reserve bottles, each release is brewed in small batches with raw honey and bold Nordic character.',
+                    heroCta: 'Explore Collection',
+                    productsTitle: 'Our Signature Meads',
+                    productsNote: 'Tap any bottle to view flavor profile',
+                    contactTitle: 'Contact the Meadery',
+                    visitTitle: 'Visit & Distribution',
+                    visitDesc: 'For private tastings, retail partnerships, and export inquiries, our team will get back to you within one business day.',
+                    contactAddressLabel: 'Address:',
+                    contactPhoneLabel: 'Phone:',
+                    contactEmailLabel: 'Email:',
+                    contactHoursLabel: 'Hours:',
+                    contactHours: 'Mon-Sat, 10:00-20:00',
+                    formTitle: 'Send a Message',
+                    formName: 'Your name',
+                    formEmail: 'Your email',
+                    formMessage: 'Tell us what you are interested in',
+                    formButton: 'Submit Inquiry',
+                    formValidation: 'Please fill in your name, email, and message.',
+                    footer: '© 2026 NORDIC Meadery. Crafted with honey, patience, and northern spirit.'
+                },
+                ru: {
+                    heroTitle: 'Авторский медовый напиток в духе северных легенд',
+                    heroSubtitle: 'От настоев на диких ягодах до выдержанных резервных серий — каждый сорт варится малыми партиями из натурального мёда с ярким северным характером.',
+                    heroCta: 'Смотреть коллекцию',
+                    productsTitle: 'Фирменные сорта',
+                    productsNote: 'Нажмите на бутылку, чтобы открыть описание вкуса',
+                    contactTitle: 'Связаться с медоварней',
+                    visitTitle: 'Визиты и дистрибуция',
+                    visitDesc: 'По вопросам частных дегустаций, сотрудничества с магазинами и экспортных поставок мы отвечаем в течение одного рабочего дня.',
+                    contactAddressLabel: 'Адрес:',
+                    contactPhoneLabel: 'Телефон:',
+                    contactEmailLabel: 'Эл. почта:',
+                    contactHoursLabel: 'Часы работы:',
+                    contactHours: 'Пн-Сб, 10:00-20:00',
+                    formTitle: 'Отправить сообщение',
+                    formName: 'Ваше имя',
+                    formEmail: 'Ваш e-mail',
+                    formMessage: 'Опишите ваш запрос',
+                    formButton: 'Отправить запрос',
+                    formValidation: 'Пожалуйста, заполните имя, e-mail и сообщение.',
+                    footer: '© 2026 NORDIC Meadery. Создано с мёдом, терпением и северным духом.'
+                }
+            };
 
-        <div class="card" onclick="openModal('blodvidr')">
-            <img src="images/blodvidr.jpg">
-            <h3>BLÓÐVIÐR</h3>
-        </div>
+            let currentLang = 'en';
 
-        <div class="card" onclick="openModal('solblod')">
-            <img src="images/solblod.jpg">
-            <h3>SOLBLÓÐ</h3>
-        </div>
+            function renderProducts() {
+                const grid = document.getElementById('product-grid');
+                grid.innerHTML = products.map(product => {
+                return `
+                    <article class="product" onclick="openModal('${product.id}')">
+                        <img src="${product.image}" alt="${product.title}">
+                        <div class="product-body">
+                                <h3 class="product-name">${product.title}</h3>
+                        </div>
+                    </article>
+                `;
+                }).join('');
+            }
 
-        <div class="card" onclick="openModal('eldhost')">
-            <img src="images/eldhost.jpg">
-            <h3>ELDHÖST</h3>
-        </div>
+            function applyTranslations(lang) {
+                currentLang = lang;
+                document.documentElement.lang = lang;
 
-        <div class="card" onclick="openModal('odrerir')">
-            <img src="images/odrerir.jpg">
-            <h3>ÓÐRERIR</h3>
-        </div>
+                document.querySelectorAll('[data-i18n]').forEach(el => {
+                    const key = el.getAttribute('data-i18n');
+                    el.textContent = i18n[lang][key] || '';
+                });
 
-        <div class="card" onclick="openModal('midgard')">
-            <img src="images/midgard.jpg">
-            <h3>MEAD OF MIDGARD</h3>
-        </div>
+                document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+                    const key = el.getAttribute('data-i18n-placeholder');
+                    el.setAttribute('placeholder', i18n[lang][key] || '');
+                });
 
-        <!-- ADVANCED LINE -->
-        <div class="card" onclick="openModal('drakkablod')">
-            <img src="images/drakkablod.jpg">
-            <h3>DRAKKABLÓÐ</h3>
-        </div>
+                document.querySelectorAll('[data-lang-btn]').forEach(btn => {
+                    btn.classList.toggle('active', btn.getAttribute('data-lang-btn') === lang);
+                });
 
-        <div class="card" onclick="openModal('runamjod')">
-            <img src="images/runamjod.jpg">
-            <h3>RÚNAMJÖÐ</h3>
-        </div>
+                renderProducts();
+            }
 
-        <div class="card" onclick="openModal('fjorkeldr')">
-            <img src="images/fjorkeldr.jpg">
-            <h3>FJÖRKELDR</h3>
-        </div>
+            function openModal(productId) {
+                const product = products.find(item => item.id === productId);
+                if (!product) {
+                    return;
+                }
 
-        <div class="card" onclick="openModal('nornagull')">
-            <img src="images/nornagull.jpg">
-            <h3>NORNAGULL</h3>
-        </div>
+                document.getElementById('modal-title').textContent = product.title;
+                document.getElementById('modal-desc').textContent = currentLang === 'ru' ? product.descRu : product.descEn;
+                document.getElementById('modal').style.display = 'flex';
+            }
 
-    </div>
-</section>
+            function closeModal() {
+                document.getElementById('modal').style.display = 'none';
+            }
 
-<!-- MODAL -->
+            function handleInquirySubmit(event) {
+                event.preventDefault();
 
-<div id="modal" class="modal" onclick="closeModal()">
-    <div class="modal-content" onclick="event.stopPropagation()">
-        <span class="close" onclick="closeModal()">✕</span>
-        <h2 id="title"></h2>
-        <p id="desc"></p>
-    </div>
-</div>
+                const name = document.getElementById('inquiry-name').value.trim();
+                const email = document.getElementById('inquiry-email').value.trim();
+                const message = document.getElementById('inquiry-message').value.trim();
 
-<footer>
-    © 2026 NORDIC Meadery
-</footer>
+                if (!name || !email || !message) {
+                    alert(i18n[currentLang].formValidation);
+                    return;
+                }
 
-<script>
+                const subject = encodeURIComponent(`Nordic Meadery inquiry from ${name}`);
+                const body = encodeURIComponent(
+                    `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
+                );
+                const mailtoUrl = `mailto:nordic.group88@gmail.com?subject=${subject}&body=${body}`;
 
-const data = {
+                window.location.href = mailtoUrl;
+            }
 
-    blodhind: {title:"BLÓÐHIND",desc:"Raspberry mead, bright and fresh."},
-    sumarblom: {title:"SUMARBLÓM",desc:"Strawberry mead, soft and smooth."},
-    skogarblod: {title:"SKÓGARBLÓÐ",desc:"Dark blackberry mead, deep and rich."},
-    blodvidr: {title:"BLÓÐVIÐR",desc:"Cherry mead, bold and smooth."},
-    solblod: {title:"SOLBLÓÐ",desc:"Orange mead, fresh and vibrant."},
-    eldhost: {title:"ELDHÖST",desc:"Apple cinnamon mead, warm and spiced."},
-    odrerir: {title:"ÓÐRERIR",desc:"Aged premium mead."},
-    midgard: {title:"MEAD OF MIDGARD",desc:"Balanced everyday mead."},
+            document.querySelectorAll('[data-lang-btn]').forEach(btn => {
+                btn.addEventListener('click', () => applyTranslations(btn.getAttribute('data-lang-btn')));
+            });
 
-    drakkablod: {title:"DRAKKABLÓÐ",desc:"Deep cherry mead with intense character."},
-    runamjod: {title:"RÚNAMJÖÐ",desc:"Mystical berry mead with layered flavors."},
-    fjorkeldr: {title:"FJÖRKELDR",desc:"Spiced mead with warmth and depth."},
-    nornagull: {title:"NORNAGULL",desc:"Golden traditional mead, refined and smooth."}
+            document.getElementById('inquiry-form').addEventListener('submit', handleInquirySubmit);
 
-};
-
-function openModal(type){
-    document.getElementById("modal").style.display="flex";
-    document.getElementById("title").innerText=data[type].title;
-    document.getElementById("desc").innerText=data[type].desc;
-}
-
-function closeModal(){
-    document.getElementById("modal").style.display="none";
-}
-
-</script>
-
-</body>
+            applyTranslations('en');
+        </script>
+    </body>
 </html>
