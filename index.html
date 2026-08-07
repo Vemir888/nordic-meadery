@@ -279,10 +279,16 @@
                 inset: 0;
                 background: rgba(6, 8, 14, 0.82);
                 display: none;
-                align-items: center;
+                align-items: flex-start;
                 justify-content: center;
                 z-index: 50;
                 padding: 16px;
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            body.modal-open {
+                overflow: hidden;
             }
 
             .modal-content {
@@ -353,9 +359,10 @@
             @media (max-width: 900px) {
                 .modal-content {
                     grid-template-columns: 1fr;
-                    max-height: 95vh;
+                    max-height: none;
                     padding: 20px;
                     gap: 20px;
+                    margin: 16px 0;
                 }
 
                 .modal-image {
@@ -368,6 +375,7 @@
 
                 .modal-details {
                     max-height: none;
+                    overflow-y: visible;
                 }
 
                 .contact-wrap {
@@ -558,10 +566,12 @@
                 document.getElementById('modal-title').textContent = product.title;
                 document.getElementById('modal-desc').textContent = currentLang === 'ru' ? product.descRu : product.descEn;
                 document.getElementById('modal').style.display = 'flex';
+                document.body.classList.add('modal-open');
             }
 
             function closeModal() {
                 document.getElementById('modal').style.display = 'none';
+                document.body.classList.remove('modal-open');
             }
 
             function handleInquirySubmit(event) {
