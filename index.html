@@ -274,6 +274,106 @@
                 font-size: 0.92rem;
             }
 
+            .age-gate {
+                position: fixed;
+                inset: 0;
+                background: rgba(6, 8, 14, 0.96);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 100;
+                padding: 20px;
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .age-gate.hidden {
+                display: none;
+            }
+
+            .age-gate-box {
+                width: min(460px, 100%);
+                background: #0f1625;
+                border: 1px solid var(--line);
+                border-radius: var(--radius);
+                padding: 36px 28px;
+                text-align: center;
+            }
+
+            .age-gate-box img {
+                width: 64px;
+                height: 64px;
+                object-fit: contain;
+                margin-bottom: 18px;
+            }
+
+            .age-gate-box h2 {
+                font-family: 'Cormorant Garamond', serif;
+                font-size: 2rem;
+                color: #fff2d5;
+                margin-bottom: 12px;
+                line-height: 1.2;
+            }
+
+            .age-gate-box p {
+                color: var(--muted);
+                line-height: 1.65;
+                margin-bottom: 24px;
+            }
+
+            .age-gate-actions {
+                display: flex;
+                gap: 12px;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .age-gate-actions button {
+                border: 1px solid var(--line);
+                border-radius: 999px;
+                padding: 12px 26px;
+                font-family: inherit;
+                font-size: 0.98rem;
+                cursor: pointer;
+                background: transparent;
+                color: var(--muted);
+                transition: 0.2s ease;
+            }
+
+            .age-gate-actions button.primary {
+                background: var(--accent);
+                border-color: var(--accent);
+                color: #12140f;
+                font-weight: 600;
+            }
+
+            .age-gate-actions button:hover {
+                opacity: 0.85;
+            }
+
+            .age-gate-denied {
+                display: none;
+                color: var(--accent-soft);
+                line-height: 1.65;
+                margin-top: 4px;
+            }
+
+            .age-gate.denied .age-gate-actions,
+            .age-gate.denied .age-gate-question {
+                display: none;
+            }
+
+            .age-gate.denied .age-gate-denied {
+                display: block;
+            }
+
+            .age-gate-lang {
+                display: flex;
+                gap: 8px;
+                justify-content: center;
+                margin-bottom: 22px;
+            }
+
             .modal {
                 position: fixed;
                 inset: 0;
@@ -390,6 +490,23 @@
         </style>
     </head>
     <body>
+        <div id="age-gate" class="age-gate">
+            <div class="age-gate-box">
+                <img src="images/icon.png" alt="NORDIC Meadery icon">
+                <div class="age-gate-lang" role="group" aria-label="Language switch">
+                    <button class="lang-btn active" data-lang-btn="en">EN</button>
+                    <button class="lang-btn" data-lang-btn="ru">RU</button>
+                </div>
+                <h2 data-i18n="ageGateTitle">Are you 18 or older?</h2>
+                <p class="age-gate-question" data-i18n="ageGateText">This site contains information about alcoholic beverages. Please confirm your age to continue.</p>
+                <div class="age-gate-actions">
+                    <button type="button" class="primary" data-i18n="ageGateConfirm" onclick="confirmAge()">Yes, I am 18+</button>
+                    <button type="button" data-i18n="ageGateDecline" onclick="denyAge()">No, I am under 18</button>
+                </div>
+                <p class="age-gate-denied" data-i18n="ageGateDenied">Sorry, you must be at least 18 years old to visit this site.</p>
+            </div>
+        </div>
+
         <header class="topbar">
             <div class="container topbar-inner">
                 <div class="brand">
@@ -494,6 +611,11 @@
                     formMessage: 'Tell us what you are interested in',
                     formButton: 'Submit Inquiry',
                     formValidation: 'Please fill in your name, email, and message.',
+                    ageGateTitle: 'Are you 18 or older?',
+                    ageGateText: 'This site contains information about alcoholic beverages. Please confirm your age to continue.',
+                    ageGateConfirm: 'Yes, I am 18+',
+                    ageGateDecline: 'No, I am under 18',
+                    ageGateDenied: 'Sorry, you must be at least 18 years old to visit this site.',
                     footer: '© 2026 NORDIC Meadery. Crafted with honey, patience, and northern spirit.'
                 },
                 ru: {
@@ -514,6 +636,11 @@
                     formMessage: 'Опишите ваш запрос',
                     formButton: 'Отправить запрос',
                     formValidation: 'Пожалуйста, заполните имя, e-mail и сообщение.',
+                    ageGateTitle: 'Вам 18 лет или больше?',
+                    ageGateText: 'Сайт содержит информацию об алкогольной продукции. Пожалуйста, подтвердите свой возраст, чтобы продолжить.',
+                    ageGateConfirm: 'Да, мне 18+',
+                    ageGateDecline: 'Нет, мне меньше 18',
+                    ageGateDenied: 'К сожалению, для посещения сайта вам должно быть не менее 18 лет.',
                     footer: '© 2026 NORDIC Meadery. Создано с мёдом, терпением и северным духом.'
                 }
             };
@@ -574,6 +701,41 @@
                 document.body.classList.remove('modal-open');
             }
 
+            const AGE_GATE_KEY = 'nordic-meadery-age-confirmed';
+
+            function readAgeConfirmation() {
+                try {
+                    return localStorage.getItem(AGE_GATE_KEY) === 'true';
+                } catch (error) {
+                    console.warn('Age confirmation could not be read from storage', error);
+                    return false;
+                }
+            }
+
+            function initAgeGate() {
+                if (readAgeConfirmation()) {
+                    document.getElementById('age-gate').classList.add('hidden');
+                    return;
+                }
+
+                document.body.classList.add('modal-open');
+            }
+
+            function confirmAge() {
+                try {
+                    localStorage.setItem(AGE_GATE_KEY, 'true');
+                } catch (error) {
+                    console.warn('Age confirmation could not be stored', error);
+                }
+
+                document.getElementById('age-gate').classList.add('hidden');
+                document.body.classList.remove('modal-open');
+            }
+
+            function denyAge() {
+                document.getElementById('age-gate').classList.add('denied');
+            }
+
             function handleInquirySubmit(event) {
                 event.preventDefault();
 
@@ -602,6 +764,7 @@
             document.getElementById('inquiry-form').addEventListener('submit', handleInquirySubmit);
 
             applyTranslations('en');
+            initAgeGate();
         </script>
     </body>
 </html>
