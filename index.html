@@ -4,19 +4,19 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>NORDIC Meadery</title>
-        <link rel="icon" type="image/png" href="images/icon.png">
+        <link rel="icon" type="image/webp" href="images/Nordic Meadery Ravencrest Emblem.webp">
         <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
         <style>
             :root {
-                --bg: #090b12;
-                --surface: #111624;
-                --surface-soft: #151d30;
-                --text: #f5f1e8;
-                --muted: #c3b8a6;
-                --accent: #d8a84c;
-                --accent-soft: #f5d18a;
-                --line: rgba(216, 168, 76, 0.25);
-                --shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+                --bg: #e5d4ae;
+                --surface: #f2e6c9;
+                --surface-soft: #ecdeba;
+                --text: #1d150a;
+                --muted: #594730;
+                --accent: #9a6a12;
+                --accent-soft: #70490b;
+                --line: rgba(112, 73, 11, 0.34);
+                --shadow: 0 18px 44px rgba(53, 36, 10, 0.26);
                 --radius: 18px;
             }
 
@@ -29,8 +29,8 @@
             body {
                 font-family: 'Manrope', sans-serif;
                 background:
-                radial-gradient(1200px 500px at 0% -20%, #3f2a10 0%, transparent 60%),
-                radial-gradient(900px 400px at 100% 0%, #1f2b4a 0%, transparent 60%),
+                radial-gradient(1200px 500px at 0% -20%, #e8cf96 0%, transparent 60%),
+                radial-gradient(900px 400px at 100% 0%, #d9c9a4 0%, transparent 60%),
                 var(--bg);
                 color: var(--text);
                 min-height: 100vh;
@@ -47,7 +47,7 @@
                 top: 0;
                 z-index: 20;
                 backdrop-filter: blur(10px);
-                background: rgba(9, 11, 18, 0.78);
+                background: rgba(229, 212, 174, 0.88);
                 border-bottom: 1px solid var(--line);
             }
 
@@ -70,11 +70,11 @@
             }
 
             .brand-icon {
-                width: 50px;
-                height: 50px;
-                border-radius: 50%;
-                object-fit: cover;
-                border: 1px solid rgba(216, 168, 76, 0.45);
+                width: auto;
+                height: 62px;
+                object-fit: contain;
+                mix-blend-mode: multiply;
+                display: block;
             }
 
             .lang-switch {
@@ -96,7 +96,7 @@
 
             .lang-btn.active {
                 background: var(--accent);
-                color: #241607;
+                color: #fdf6e3;
             }
 
             .hero {
@@ -123,8 +123,8 @@
                 align-items: center;
                 justify-content: center;
                 padding: 12px 24px;
-                background: linear-gradient(120deg, var(--accent), #e3b25a);
-                color: #291a09;
+                background: linear-gradient(120deg, var(--accent), #bd8720);
+                color: #fdf6e3;
                 text-decoration: none;
                 border-radius: 999px;
                 font-weight: 700;
@@ -162,24 +162,26 @@
             }
 
             .product {
-                background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)), var(--surface);
+                background: var(--surface);
                 border: 1px solid var(--line);
                 border-radius: var(--radius);
                 overflow: hidden;
-                transition: transform 0.25s ease, border-color 0.25s ease;
+                box-shadow: 0 6px 18px rgba(53, 36, 10, 0.14);
+                transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
                 cursor: pointer;
             }
 
             .product:hover {
                 transform: translateY(-6px);
-                border-color: rgba(216, 168, 76, 0.55);
+                border-color: rgba(112, 73, 11, 0.65);
+                box-shadow: 0 18px 38px rgba(53, 36, 10, 0.28);
             }
 
             .product img {
                 width: 100%;
-                height: 300px;
-                object-fit: contain;
-                background: #0b1120;
+                aspect-ratio: 4 / 5;
+                height: auto;
+                object-fit: cover;
                 display: block;
             }
 
@@ -191,7 +193,7 @@
                 font-family: 'Cormorant Garamond', serif;
                 font-size: 1.5rem;
                 margin-bottom: 8px;
-                color: #fff4db;
+                color: var(--text);
             }
 
             .product-desc {
@@ -229,7 +231,7 @@
             }
 
             .contact-list a {
-                color: #f3dfb5;
+                color: var(--accent-soft);
                 text-decoration: none;
             }
 
@@ -242,8 +244,8 @@
             .contact-form input,
             .contact-form textarea {
                 width: 100%;
-                background: rgba(8, 10, 17, 0.8);
-                border: 1px solid rgba(216, 168, 76, 0.25);
+                background: #f7edd4;
+                border: 1px solid rgba(112, 73, 11, 0.38);
                 border-radius: 10px;
                 color: var(--text);
                 font-family: 'Manrope', sans-serif;
@@ -257,8 +259,8 @@
 
             .contact-form button {
                 border: 0;
-                background: linear-gradient(120deg, var(--accent), #ebc26d);
-                color: #2c1b08;
+                background: linear-gradient(120deg, var(--accent), #bd8720);
+                color: #fdf6e3;
                 font-weight: 800;
                 border-radius: 10px;
                 padding: 11px 16px;
@@ -267,7 +269,7 @@
 
             footer {
                 border-top: 1px solid var(--line);
-                color: #a09078;
+                color: var(--muted);
                 text-align: center;
                 padding: 28px 0 36px;
                 margin-top: 40px;
@@ -277,7 +279,7 @@
             .age-gate {
                 position: fixed;
                 inset: 0;
-                background: rgba(6, 8, 14, 0.96);
+                background: rgba(229, 212, 174, 0.97);
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -293,24 +295,27 @@
 
             .age-gate-box {
                 width: min(460px, 100%);
-                background: #0f1625;
+                background: var(--surface);
                 border: 1px solid var(--line);
                 border-radius: var(--radius);
                 padding: 36px 28px;
                 text-align: center;
+                box-shadow: var(--shadow);
             }
 
             .age-gate-box img {
-                width: 64px;
-                height: 64px;
+                width: min(260px, 100%);
+                height: auto;
                 object-fit: contain;
-                margin-bottom: 18px;
+                mix-blend-mode: multiply;
+                margin: 0 auto 18px;
+                display: block;
             }
 
             .age-gate-box h2 {
                 font-family: 'Cormorant Garamond', serif;
                 font-size: 2rem;
-                color: #fff2d5;
+                color: var(--text);
                 margin-bottom: 12px;
                 line-height: 1.2;
             }
@@ -343,7 +348,7 @@
             .age-gate-actions button.primary {
                 background: var(--accent);
                 border-color: var(--accent);
-                color: #12140f;
+                color: #fdf6e3;
                 font-weight: 600;
             }
 
@@ -377,7 +382,7 @@
             .modal {
                 position: fixed;
                 inset: 0;
-                background: rgba(6, 8, 14, 0.82);
+                background: rgba(29, 21, 10, 0.68);
                 display: none;
                 align-items: flex-start;
                 justify-content: center;
@@ -394,7 +399,8 @@
             .modal-content {
                 width: min(1000px, 95%);
                 max-height: 90vh;
-                background: #0f1625;
+                background: var(--surface);
+                box-shadow: var(--shadow);
                 border: 1px solid var(--line);
                 border-radius: var(--radius);
                 padding: 32px;
@@ -409,7 +415,7 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                background: linear-gradient(135deg, rgba(216, 168, 76, 0.05) 0%, transparent 100%);
+                background: linear-gradient(135deg, rgba(112, 73, 11, 0.16) 0%, rgba(112, 73, 11, 0.04) 100%);
                 border-radius: var(--radius);
                 padding: 24px;
             }
@@ -436,7 +442,7 @@
                 border-radius: 50%;
                 font-size: 20px;
                 line-height: 34px;
-                background: rgba(216, 168, 76, 0.14);
+                background: rgba(112, 73, 11, 0.18);
                 color: var(--accent-soft);
                 cursor: pointer;
             }
@@ -445,7 +451,7 @@
                 font-family: 'Cormorant Garamond', serif;
                 font-size: 2.2rem;
                 margin-bottom: 16px;
-                color: #fff2d5;
+                color: var(--text);
                 line-height: 1.2;
             }
 
@@ -486,13 +492,17 @@
                     flex-direction: column;
                     align-items: flex-start;
                 }
+
+                .brand-icon {
+                    height: 46px;
+                }
             }
         </style>
     </head>
     <body>
         <div id="age-gate" class="age-gate">
             <div class="age-gate-box">
-                <img src="images/Nordic Meadery Ravencrest Emblem.png" alt="NORDIC Meadery icon">
+                <img src="images/Nordic Meadery Ravencrest Emblem.webp" alt="NORDIC Meadery">
                 <div class="age-gate-lang" role="group" aria-label="Language switch">
                     <button class="lang-btn active" data-lang-btn="en">EN</button>
                     <button class="lang-btn" data-lang-btn="ru">RU</button>
@@ -510,8 +520,7 @@
         <header class="topbar">
             <div class="container topbar-inner">
                 <div class="brand">
-                    <img class="brand-icon" src="images/Nordic Meadery Ravencrest Emblem.png" alt="NORDIC Meadery icon">
-                    <span>NORDIC Meadery</span>
+                    <img class="brand-icon" src="images/Nordic Meadery Ravencrest Emblem.webp" alt="NORDIC Meadery">
                 </div>
                 <div class="lang-switch" role="group" aria-label="Language switch">
                     <button class="lang-btn active" data-lang-btn="en">EN</button>
@@ -582,14 +591,14 @@
 
         <script>
             const products = [
-                { id: 'midgard', image: 'images/meads/Mead of Midgard at Golden Hour.png', title: 'MEAD OF MIDGARD', descEn: 'Traditional Honey Mead\n\nMead of Midgard is a classic honey mead inspired by the legendary realm of humankind. Crafted from carefully selected honey, water, and yeast, it showcases the pure character of traditional mead in its most timeless form.\n\nSmooth, golden, and naturally aromatic, it offers gentle honey sweetness, subtle floral notes, and a clean, warming finish. Balanced and approachable, Mead of Midgard is an ideal introduction to mead while remaining rich enough for those who appreciate traditional honey wine.\n\nFlavor profile: Honeyed, floral, smooth, gently sweet\nCharacter: Classic, balanced, and warming\nBest served: Slightly chilled or at cellar temperature\nPairs well with: Roasted meats, aged cheeses, nuts, pastries, and honey-based desserts\n\nGolden. Timeless. Born of Midgard.', descRu: 'Традиционный медовый напиток\n\nMead of Midgard — классический медовый напиток, вдохновлённый легендарным миром людей. Созданный из тщательно отобранного мёда, воды и дрожжей, он раскрывает чистый характер традиционного мёда в его самой вневременной форме.\n\nМягкий, золотистый и естественно ароматный, он дарит нежную медовую сладость, тонкие цветочные ноты и чистое, согревающее послевкусие. Сбалансированный и доступный, Mead of Midgard — идеальное знакомство с медовым напитком, при этом достаточно насыщенный для ценителей традиционного медового вина.\n\nВкусовой профиль: Медовый, цветочный, мягкий, слегка сладкий\nХарактер: Классический, сбалансированный, согревающий\nПодавать: Слегка охлаждённым или при температуре погреба\nСочетается с: Жареным мясом, выдержанными сырами, орехами, выпечкой и медовыми десертами\n\nЗолотой. Вневременной. Рождённый в Мидгарде.' },
-                { id: 'valhalla', image: 'images/meads/Valhalla Mead in the Great Hall.png', title: 'VALHALLA', descEn: 'Strong Traditional Honey Mead\n\nValhalla is a bold traditional mead inspired by the legendary vessel of poetic inspiration in Norse mythology. Crafted with a generous amount of honey, it delivers a richer body, deeper sweetness, and greater strength than a classic mead.\n\nGolden and full-bodied, Óðrerir reveals concentrated honey aromas, warm floral notes, and a long, smooth finish. Its powerful yet balanced character makes it a mead to be enjoyed slowly—ideal for quiet evenings, celebrations, and memorable feasts.\n\nFlavor profile: Rich honey, floral, full-bodied, warming\nCharacter: Strong, smooth, and refined\nBest served: Slightly chilled or at cellar temperature\nPairs well with: Aged cheeses, roasted meats, smoked dishes, nuts, dark chocolate, and rich desserts\n\nBold. Golden. Worthy of the skalds.', descRu: 'Крепкий традиционный медовый напиток\n\nÓðrerir — смелый традиционный мёд, вдохновлённый легендарным сосудом поэтического вдохновения в скандинавской мифологии. Созданный с щедрым количеством мёда, он дарит более насыщенное тело, глубокую сладость и большую крепость, чем классический мёд.\n\nЗолотистый и полнотелый, Óðrerir раскрывает концентрированные медовые ароматы, тёплые цветочные ноты и долгое, мягкое послевкусие. Его мощный, но сбалансированный характер делает этот мёд напитком для неспешного наслаждения — идеален для тихих вечеров, торжеств и памятных застолий.\n\nВкусовой профиль: Насыщенный мёд, цветочный, полнотелый, согревающий\nХарактер: Крепкий, мягкий, изысканный\nПодавать: Слегка охлаждённым или при температуре погреба\nСочетается с: Выдержанными сырами, жареным мясом, копчёностями, орехами, тёмным шоколадом и насыщенными десертами\n\nСмелый. Золотой. Достойный скальдов.' },
-                { id: 'bloodwood', image: 'images/meads/Bloodwood Cherry Mead in the Sacred Grove.png', title: 'BLOODWOOD', descEn: 'Cherry Mead\n\nBloodwood is a deep crimson cherry mead inspired by the dark forests and ancient legends of the North. Crafted with honey and ripe cherries, it combines rich fruit character with balanced sweetness and a bright, refreshing acidity.\n\nJuicy cherry notes lead the flavor, followed by delicate honey warmth and a smooth, lingering finish. Bold in color and expressive in taste, Blóðviðr is an approachable fruit mead with a darker, more mysterious character.\n\nFlavor profile: Ripe cherry, honeyed, lightly tart, gently sweet\nCharacter: Rich, vibrant, and smooth\nBest served: Chilled or slightly below room temperature\nPairs well with: Roasted duck, smoked meats, aged cheeses, dark chocolate, and berry desserts\n\nCrimson. Wild. Born of the forest.', descRu: 'Вишнёвый мёд\n\nBlóðviðr — глубокий багряный вишнёвый мёд, вдохновлённый тёмными лесами и древними легендами Севера. Созданный из мёда и спелой вишни, он сочетает насыщенный фруктовый характер со сбалансированной сладостью и яркой, освежающей кислинкой.\n\nСочные вишнёвые ноты ведут вкус, за ними следует деликатное медовое тепло и мягкое, долгое послевкусие. Смелый по цвету и выразительный по вкусу, Blóðviðr — доступный фруктовый мёд с более тёмным, загадочным характером.\n\nВкусовой профиль: Спелая вишня, медовый, слегка терпкий, мягко сладкий\nХарактер: Насыщенный, живой, мягкий\nПодавать: Охлаждённым или чуть ниже комнатной температуры\nСочетается с: Запечённой уткой, копчёным мясом, выдержанными сырами, тёмным шоколадом и ягодными десертами\n\nБагряный. Дикий. Рождённый в лесу.' },
-                { id: 'solblot', image: 'images/meads/Solblot Mead at the Fjord Temple.png', title: 'SÓLBLÓT', descEn: 'Sea Buckthorn Mead\n\nSólblót is a vibrant sea buckthorn mead inspired by the golden light of the northern sun. Crafted with honey and ripe sea buckthorn, it combines gentle sweetness with bright acidity and a refreshing citrus-like character.\n\nIts vivid golden color reflects its bold personality, while the natural tartness of sea buckthorn gives the mead a crisp, lively finish. Distinctive yet approachable, Sólblót is a refreshing choice for those who enjoy expressive fruit meads with a balanced sweet-and-sour profile.\n\nFlavor profile: Bright, fruity, tart, lightly sweet\nCharacter: Refreshing and vibrant\nBest served: Chilled\nPairs well with: Soft cheeses, roasted poultry, grilled vegetables, seafood, and light desserts\n\nBright. Tart. Sun-forged.', descRu: 'Облепиховый мёд\n\nSólblót — яркий облепиховый мёд, вдохновлённый золотым светом северного солнца. Созданный из мёда и спелой облепихи, он сочетает мягкую сладость с яркой кислинкой и освежающим цитрусовым характером.\n\nЕго насыщенный золотистый цвет отражает смелый характер, а природная терпкость облепихи придаёт напитку свежее, живое послевкусие. Выразительный, но доступный, Sólblót — освежающий выбор для ценителей фруктовых медов со сбалансированным кисло-сладким профилем.\n\nВкусовой профиль: Яркий, фруктовый, терпкий, слегка сладкий\nХарактер: Освежающий и живой\nПодавать: Охлаждённым\nСочетается с: Мягкими сырами, запечённой птицей, овощами гриль, морепродуктами и лёгкими десертами\n\nЯркий. Терпкий. Выкованный солнцем.' },
-                { id: 'blackthorn', image: 'images/meads/Blackthorn Nordic Mead at Sunset.png', title: 'BLACKTHORN', descEn: 'Blackberry Mead\n\nBlackthorn is a dark, fruit-forward blackberry mead inspired by the wild forests of the North. Crafted with honey and ripe blackberries, it brings together deep berry flavor, gentle sweetness, and a pleasantly tart finish.\n\nRich purple-red in color, it opens with juicy blackberry aromas followed by soft honey notes and a smooth, lingering character. Bold yet balanced, Skógarblóð is an expressive mead for those who enjoy darker fruits and fuller flavors.\n\nFlavor profile: Blackberry, honeyed, lightly tart, gently sweet\nCharacter: Dark, rich, and smooth\nBest served: Chilled or slightly below room temperature\nPairs well with: Roasted meats, smoked dishes, aged cheeses, dark chocolate, and berry desserts\n\nDark. Wild. Born of the forest.', descRu: 'Ежевичный мёд\n\nSkógarblóð — тёмный, фруктовый ежевичный мёд, вдохновлённый дикими лесами Севера. Созданный из мёда и спелой ежевики, он объединяет глубокий ягодный вкус, мягкую сладость и приятную терпкость в послевкусии.\n\nНасыщенного пурпурно-красного цвета, он раскрывается сочными ежевичными ароматами, за которыми следуют мягкие медовые ноты и гладкий, долгий характер. Смелый, но сбалансированный, Skógarblóð — выразительный мёд для ценителей тёмных ягод и насыщенных вкусов.\n\nВкусовой профиль: Ежевика, медовый, слегка терпкий, мягко сладкий\nХарактер: Тёмный, насыщенный, мягкий\nПодавать: Охлаждённым или чуть ниже комнатной температуры\nСочетается с: Жареным мясом, копчёностями, выдержанными сырами, тёмным шоколадом и ягодными десертами\n\nТёмный. Дикий. Рождённый в лесу.' },
-                { id: 'emberfall', image: 'images/meads/Emberfall Mead in a Nordic Sunset Feast.png', title: 'EMBERFALL', descEn: 'Apple & Cinnamon Mead\n\nEmberfall is a warm and aromatic apple-and-cinnamon mead inspired by the glowing fires and harvest feasts of the North. Crafted with honey, ripe apples, and fragrant cinnamon, it brings together orchard sweetness, gentle spice, and a smooth, comforting finish.\n\nGolden-amber in color, it opens with fresh apple aromas followed by soft honey notes and warming cinnamon. Balanced and inviting, Eldhöst is a richly flavored mead made for cool evenings, festive gatherings, and slow enjoyment.\n\nFlavor profile: Ripe apple, honeyed, gently spiced, softly sweet\nCharacter: Warm, aromatic, and comforting\nBest served: Slightly chilled, at cellar temperature, or gently warmed\nPairs well with: Roasted pork, aged cheeses, apple desserts, spiced pastries, and nuts\n\nWarm. Spiced. Forged by autumn fire.', descRu: 'Яблочно-коричный мёд\n\nEldhöst — тёплый и ароматный яблочно-коричный мёд, вдохновлённый пылающими кострами и осенними пирами Севера. Созданный из мёда, спелых яблок и ароматной корицы, он объединяет садовую сладость, мягкую пряность и гладкое, уютное послевкусие.\n\nЗолотисто-янтарного цвета, он раскрывается свежими яблочными ароматами, за которыми следуют мягкие медовые ноты и согревающая корица. Сбалансированный и манящий, Eldhöst — насыщенный мёд для прохладных вечеров, праздничных застолий и неспешного наслаждения.\n\nВкусовой профиль: Спелое яблоко, медовый, мягко пряный, нежно сладкий\nХарактер: Тёплый, ароматный, уютный\nПодавать: Слегка охлаждённым, при температуре погреба или слегка подогретым\nСочетается с: Жареной свининой, выдержанными сырами, яблочными десертами, пряной выпечкой и орехами\n\nТёплый. Пряный. Выкованный осенним огнём.' },
-                { id: 'moonberry', image: 'images/meads/Moonberry Mead in a Nordic Twilight Valley.png', title: 'MOONBERRY', descEn: 'Blueberry Mead\n\nMoonberry is a deep, velvety blueberry mead inspired by the stillness and mystery of northern nights. Crafted with honey and ripe blueberries, it combines lush berry flavor, gentle sweetness, and a soft, refreshing tartness.\n\nDark violet in color, Náttber opens with rich blueberry aromas followed by delicate honey notes and a smooth, lingering finish. Fruity, balanced, and easy to enjoy, it offers a softer and more elegant expression of dark-berry mead.\n\nFlavor profile: Ripe blueberry, honeyed, gently tart, softly sweet\nCharacter: Smooth, dark, and elegant\nBest served: Chilled or slightly below room temperature\nPairs well with: Soft cheeses, roasted poultry, chocolate desserts, pastries, and fresh berries\n\nDark. Smooth. Born beneath northern skies.', descRu: 'Черничный мёд\n\nNáttber — глубокий, бархатистый черничный мёд, вдохновлённый тишиной и таинственностью северных ночей. Созданный из мёда и спелой черники, он сочетает насыщенный ягодный вкус, мягкую сладость и нежную, освежающую терпкость.\n\nТёмно-фиолетового цвета, Náttber раскрывается богатыми черничными ароматами, за которыми следуют деликатные медовые ноты и гладкое, долгое послевкусие. Фруктовый, сбалансированный и лёгкий в наслаждении, он предлагает более мягкое и элегантное выражение тёмно-ягодного мёда.\n\nВкусовой профиль: Спелая черника, медовый, мягко терпкий, нежно сладкий\nХарактер: Гладкий, тёмный, элегантный\nПодавать: Охлаждённым или чуть ниже комнатной температуры\nСочетается с: Мягкими сырами, запечённой птицей, шоколадными десертами, выпечкой и свежими ягодами\n\nТёмный. Гладкий. Рождённый под северным небом.' },
-                { id: 'ragnarsruby', image: 'images/meads/Ragnar’s Ruby Nordic Raspberry Mead.png', title: "RAGNAR'S RUBY", descEn: "Raspberry Mead\n\nRagnar's Ruby is a vivid raspberry mead inspired by the bold spirit and legendary journeys of the North. Crafted with honey and ripe raspberries, it combines bright berry flavor, delicate sweetness, and a lively, refreshing acidity.\n\nRuby-red in color, it opens with fragrant raspberry aromas followed by soft honey notes and a clean, gently tart finish. Vibrant and expressive, Ragnar's Ruby is an approachable fruit mead with a fresh character and unmistakable color.\n\nFlavor profile: Ripe raspberry, honeyed, bright, gently tart\nCharacter: Vibrant, refreshing, and smooth\nBest served: Chilled\nPairs well with: Soft cheeses, roasted poultry, chocolate desserts, fruit tarts, and fresh berries\n\nBold. Bright. Worthy of a legend.", descRu: "Малиновый мёд\n\nRagnar's Ruby — яркий малиновый мёд, вдохновлённый смелым духом и легендарными путешествиями Севера. Созданный из мёда и спелой малины, он сочетает яркий ягодный вкус, деликатную сладость и живую, освежающую кислинку.\n\nРубиново-красного цвета, он раскрывается ароматной малиной, за которой следуют мягкие медовые ноты и чистое, мягко терпкое послевкусие. Живой и выразительный, Ragnar's Ruby — доступный фруктовый мёд со свежим характером и безошибочным цветом.\n\nВкусовой профиль: Спелая малина, медовый, яркий, мягко терпкий\nХарактер: Живой, освежающий, гладкий\nПодавать: Охлаждённым\nСочетается с: Мягкими сырами, запечённой птицей, шоколадными десертами, фруктовыми тартами и свежими ягодами\n\nСмелый. Яркий. Достойный легенды." },
+                { id: 'midgard', image: 'images/meads/Mead of Midgard at Golden Hour.webp', title: 'MEAD OF MIDGARD', descEn: 'Traditional Honey Mead\n\nMead of Midgard is a classic honey mead inspired by the legendary realm of humankind. Crafted from carefully selected honey, water, and yeast, it showcases the pure character of traditional mead in its most timeless form.\n\nSmooth, golden, and naturally aromatic, it offers gentle honey sweetness, subtle floral notes, and a clean, warming finish. Balanced and approachable, Mead of Midgard is an ideal introduction to mead while remaining rich enough for those who appreciate traditional honey wine.\n\nFlavor profile: Honeyed, floral, smooth, gently sweet\nCharacter: Classic, balanced, and warming\nBest served: Slightly chilled or at cellar temperature\nPairs well with: Roasted meats, aged cheeses, nuts, pastries, and honey-based desserts\n\nGolden. Timeless. Born of Midgard.', descRu: 'Традиционный медовый напиток\n\nMead of Midgard — классический медовый напиток, вдохновлённый легендарным миром людей. Созданный из тщательно отобранного мёда, воды и дрожжей, он раскрывает чистый характер традиционного мёда в его самой вневременной форме.\n\nМягкий, золотистый и естественно ароматный, он дарит нежную медовую сладость, тонкие цветочные ноты и чистое, согревающее послевкусие. Сбалансированный и доступный, Mead of Midgard — идеальное знакомство с медовым напитком, при этом достаточно насыщенный для ценителей традиционного медового вина.\n\nВкусовой профиль: Медовый, цветочный, мягкий, слегка сладкий\nХарактер: Классический, сбалансированный, согревающий\nПодавать: Слегка охлаждённым или при температуре погреба\nСочетается с: Жареным мясом, выдержанными сырами, орехами, выпечкой и медовыми десертами\n\nЗолотой. Вневременной. Рождённый в Мидгарде.' },
+                { id: 'valhalla', image: 'images/meads/Valhalla Mead in the Great Hall.webp', title: 'VALHALLA', descEn: 'Strong Traditional Honey Mead\n\nValhalla is a bold traditional mead inspired by the legendary vessel of poetic inspiration in Norse mythology. Crafted with a generous amount of honey, it delivers a richer body, deeper sweetness, and greater strength than a classic mead.\n\nGolden and full-bodied, Valhalla reveals concentrated honey aromas, warm floral notes, and a long, smooth finish. Its powerful yet balanced character makes it a mead to be enjoyed slowly—ideal for quiet evenings, celebrations, and memorable feasts.\n\nFlavor profile: Rich honey, floral, full-bodied, warming\nCharacter: Strong, smooth, and refined\nBest served: Slightly chilled or at cellar temperature\nPairs well with: Aged cheeses, roasted meats, smoked dishes, nuts, dark chocolate, and rich desserts\n\nBold. Golden. Worthy of the skalds.', descRu: 'Крепкий традиционный медовый напиток\n\nValhalla — смелый традиционный мёд, вдохновлённый легендарным сосудом поэтического вдохновения в скандинавской мифологии. Созданный с щедрым количеством мёда, он дарит более насыщенное тело, глубокую сладость и большую крепость, чем классический мёд.\n\nЗолотистый и полнотелый, Valhalla раскрывает концентрированные медовые ароматы, тёплые цветочные ноты и долгое, мягкое послевкусие. Его мощный, но сбалансированный характер делает этот мёд напитком для неспешного наслаждения — идеален для тихих вечеров, торжеств и памятных застолий.\n\nВкусовой профиль: Насыщенный мёд, цветочный, полнотелый, согревающий\nХарактер: Крепкий, мягкий, изысканный\nПодавать: Слегка охлаждённым или при температуре погреба\nСочетается с: Выдержанными сырами, жареным мясом, копчёностями, орехами, тёмным шоколадом и насыщенными десертами\n\nСмелый. Золотой. Достойный скальдов.' },
+                { id: 'bloodwood', image: 'images/meads/Bloodwood Cherry Mead in the Sacred Grove.webp', title: 'BLOODWOOD', descEn: 'Cherry Mead\n\nBloodwood is a deep crimson cherry mead inspired by the dark forests and ancient legends of the North. Crafted with honey and ripe cherries, it combines rich fruit character with balanced sweetness and a bright, refreshing acidity.\n\nJuicy cherry notes lead the flavor, followed by delicate honey warmth and a smooth, lingering finish. Bold in color and expressive in taste, Bloodwood is an approachable fruit mead with a darker, more mysterious character.\n\nFlavor profile: Ripe cherry, honeyed, lightly tart, gently sweet\nCharacter: Rich, vibrant, and smooth\nBest served: Chilled or slightly below room temperature\nPairs well with: Roasted duck, smoked meats, aged cheeses, dark chocolate, and berry desserts\n\nCrimson. Wild. Born of the forest.', descRu: 'Вишнёвый мёд\n\nBloodwood — глубокий багряный вишнёвый мёд, вдохновлённый тёмными лесами и древними легендами Севера. Созданный из мёда и спелой вишни, он сочетает насыщенный фруктовый характер со сбалансированной сладостью и яркой, освежающей кислинкой.\n\nСочные вишнёвые ноты ведут вкус, за ними следует деликатное медовое тепло и мягкое, долгое послевкусие. Смелый по цвету и выразительный по вкусу, Bloodwood — доступный фруктовый мёд с более тёмным, загадочным характером.\n\nВкусовой профиль: Спелая вишня, медовый, слегка терпкий, мягко сладкий\nХарактер: Насыщенный, живой, мягкий\nПодавать: Охлаждённым или чуть ниже комнатной температуры\nСочетается с: Запечённой уткой, копчёным мясом, выдержанными сырами, тёмным шоколадом и ягодными десертами\n\nБагряный. Дикий. Рождённый в лесу.' },
+                { id: 'solblot', image: 'images/meads/Solblot Mead at the Fjord Temple.webp', title: 'SÓLBLÓT', descEn: 'Sea Buckthorn Mead\n\nSólblót is a vibrant sea buckthorn mead inspired by the golden light of the northern sun. Crafted with honey and ripe sea buckthorn, it combines gentle sweetness with bright acidity and a refreshing citrus-like character.\n\nIts vivid golden color reflects its bold personality, while the natural tartness of sea buckthorn gives the mead a crisp, lively finish. Distinctive yet approachable, Sólblót is a refreshing choice for those who enjoy expressive fruit meads with a balanced sweet-and-sour profile.\n\nFlavor profile: Bright, fruity, tart, lightly sweet\nCharacter: Refreshing and vibrant\nBest served: Chilled\nPairs well with: Soft cheeses, roasted poultry, grilled vegetables, seafood, and light desserts\n\nBright. Tart. Sun-forged.', descRu: 'Облепиховый мёд\n\nSólblót — яркий облепиховый мёд, вдохновлённый золотым светом северного солнца. Созданный из мёда и спелой облепихи, он сочетает мягкую сладость с яркой кислинкой и освежающим цитрусовым характером.\n\nЕго насыщенный золотистый цвет отражает смелый характер, а природная терпкость облепихи придаёт напитку свежее, живое послевкусие. Выразительный, но доступный, Sólblót — освежающий выбор для ценителей фруктовых медов со сбалансированным кисло-сладким профилем.\n\nВкусовой профиль: Яркий, фруктовый, терпкий, слегка сладкий\nХарактер: Освежающий и живой\nПодавать: Охлаждённым\nСочетается с: Мягкими сырами, запечённой птицей, овощами гриль, морепродуктами и лёгкими десертами\n\nЯркий. Терпкий. Выкованный солнцем.' },
+                { id: 'blackthorn', image: 'images/meads/Blackthorn Nordic Mead at Sunset.webp', title: 'BLACKTHORN', descEn: 'Blackberry Mead\n\nBlackthorn is a dark, fruit-forward blackberry mead inspired by the wild forests of the North. Crafted with honey and ripe blackberries, it brings together deep berry flavor, gentle sweetness, and a pleasantly tart finish.\n\nRich purple-red in color, it opens with juicy blackberry aromas followed by soft honey notes and a smooth, lingering character. Bold yet balanced, Blackthorn is an expressive mead for those who enjoy darker fruits and fuller flavors.\n\nFlavor profile: Blackberry, honeyed, lightly tart, gently sweet\nCharacter: Dark, rich, and smooth\nBest served: Chilled or slightly below room temperature\nPairs well with: Roasted meats, smoked dishes, aged cheeses, dark chocolate, and berry desserts\n\nDark. Wild. Born of the forest.', descRu: 'Ежевичный мёд\n\nBlackthorn — тёмный, фруктовый ежевичный мёд, вдохновлённый дикими лесами Севера. Созданный из мёда и спелой ежевики, он объединяет глубокий ягодный вкус, мягкую сладость и приятную терпкость в послевкусии.\n\nНасыщенного пурпурно-красного цвета, он раскрывается сочными ежевичными ароматами, за которыми следуют мягкие медовые ноты и гладкий, долгий характер. Смелый, но сбалансированный, Blackthorn — выразительный мёд для ценителей тёмных ягод и насыщенных вкусов.\n\nВкусовой профиль: Ежевика, медовый, слегка терпкий, мягко сладкий\nХарактер: Тёмный, насыщенный, мягкий\nПодавать: Охлаждённым или чуть ниже комнатной температуры\nСочетается с: Жареным мясом, копчёностями, выдержанными сырами, тёмным шоколадом и ягодными десертами\n\nТёмный. Дикий. Рождённый в лесу.' },
+                { id: 'emberfall', image: 'images/meads/Emberfall Mead in a Nordic Sunset Feast.webp', title: 'EMBERFALL', descEn: 'Apple & Cinnamon Mead\n\nEmberfall is a warm and aromatic apple-and-cinnamon mead inspired by the glowing fires and harvest feasts of the North. Crafted with honey, ripe apples, and fragrant cinnamon, it brings together orchard sweetness, gentle spice, and a smooth, comforting finish.\n\nGolden-amber in color, it opens with fresh apple aromas followed by soft honey notes and warming cinnamon. Balanced and inviting, Emberfall is a richly flavored mead made for cool evenings, festive gatherings, and slow enjoyment.\n\nFlavor profile: Ripe apple, honeyed, gently spiced, softly sweet\nCharacter: Warm, aromatic, and comforting\nBest served: Slightly chilled, at cellar temperature, or gently warmed\nPairs well with: Roasted pork, aged cheeses, apple desserts, spiced pastries, and nuts\n\nWarm. Spiced. Forged by autumn fire.', descRu: 'Яблочно-коричный мёд\n\nEmberfall — тёплый и ароматный яблочно-коричный мёд, вдохновлённый пылающими кострами и осенними пирами Севера. Созданный из мёда, спелых яблок и ароматной корицы, он объединяет садовую сладость, мягкую пряность и гладкое, уютное послевкусие.\n\nЗолотисто-янтарного цвета, он раскрывается свежими яблочными ароматами, за которыми следуют мягкие медовые ноты и согревающая корица. Сбалансированный и манящий, Emberfall — насыщенный мёд для прохладных вечеров, праздничных застолий и неспешного наслаждения.\n\nВкусовой профиль: Спелое яблоко, медовый, мягко пряный, нежно сладкий\nХарактер: Тёплый, ароматный, уютный\nПодавать: Слегка охлаждённым, при температуре погреба или слегка подогретым\nСочетается с: Жареной свининой, выдержанными сырами, яблочными десертами, пряной выпечкой и орехами\n\nТёплый. Пряный. Выкованный осенним огнём.' },
+                { id: 'moonberry', image: 'images/meads/Moonberry Mead in a Nordic Twilight Valley.webp', title: 'MOONBERRY', descEn: 'Blueberry Mead\n\nMoonberry is a deep, velvety blueberry mead inspired by the stillness and mystery of northern nights. Crafted with honey and ripe blueberries, it combines lush berry flavor, gentle sweetness, and a soft, refreshing tartness.\n\nDark violet in color, Moonberry opens with rich blueberry aromas followed by delicate honey notes and a smooth, lingering finish. Fruity, balanced, and easy to enjoy, it offers a softer and more elegant expression of dark-berry mead.\n\nFlavor profile: Ripe blueberry, honeyed, gently tart, softly sweet\nCharacter: Smooth, dark, and elegant\nBest served: Chilled or slightly below room temperature\nPairs well with: Soft cheeses, roasted poultry, chocolate desserts, pastries, and fresh berries\n\nDark. Smooth. Born beneath northern skies.', descRu: 'Черничный мёд\n\nMoonberry — глубокий, бархатистый черничный мёд, вдохновлённый тишиной и таинственностью северных ночей. Созданный из мёда и спелой черники, он сочетает насыщенный ягодный вкус, мягкую сладость и нежную, освежающую терпкость.\n\nТёмно-фиолетового цвета, Moonberry раскрывается богатыми черничными ароматами, за которыми следуют деликатные медовые ноты и гладкое, долгое послевкусие. Фруктовый, сбалансированный и лёгкий в наслаждении, он предлагает более мягкое и элегантное выражение тёмно-ягодного мёда.\n\nВкусовой профиль: Спелая черника, медовый, мягко терпкий, нежно сладкий\nХарактер: Гладкий, тёмный, элегантный\nПодавать: Охлаждённым или чуть ниже комнатной температуры\nСочетается с: Мягкими сырами, запечённой птицей, шоколадными десертами, выпечкой и свежими ягодами\n\nТёмный. Гладкий. Рождённый под северным небом.' },
+                { id: 'ragnarsruby', image: 'images/meads/Ragnars Ruby Nordic Raspberry Mead.webp', title: "RAGNAR'S RUBY", descEn: "Raspberry Mead\n\nRagnar's Ruby is a vivid raspberry mead inspired by the bold spirit and legendary journeys of the North. Crafted with honey and ripe raspberries, it combines bright berry flavor, delicate sweetness, and a lively, refreshing acidity.\n\nRuby-red in color, it opens with fragrant raspberry aromas followed by soft honey notes and a clean, gently tart finish. Vibrant and expressive, Ragnar's Ruby is an approachable fruit mead with a fresh character and unmistakable color.\n\nFlavor profile: Ripe raspberry, honeyed, bright, gently tart\nCharacter: Vibrant, refreshing, and smooth\nBest served: Chilled\nPairs well with: Soft cheeses, roasted poultry, chocolate desserts, fruit tarts, and fresh berries\n\nBold. Bright. Worthy of a legend.", descRu: "Малиновый мёд\n\nRagnar's Ruby — яркий малиновый мёд, вдохновлённый смелым духом и легендарными путешествиями Севера. Созданный из мёда и спелой малины, он сочетает яркий ягодный вкус, деликатную сладость и живую, освежающую кислинку.\n\nРубиново-красного цвета, он раскрывается ароматной малиной, за которой следуют мягкие медовые ноты и чистое, мягко терпкое послевкусие. Живой и выразительный, Ragnar's Ruby — доступный фруктовый мёд со свежим характером и безошибочным цветом.\n\nВкусовой профиль: Спелая малина, медовый, яркий, мягко терпкий\nХарактер: Живой, освежающий, гладкий\nПодавать: Охлаждённым\nСочетается с: Мягкими сырами, запечённой птицей, шоколадными десертами, фруктовыми тартами и свежими ягодами\n\nСмелый. Яркий. Достойный легенды." },
             ];
 
             const i18n = {
